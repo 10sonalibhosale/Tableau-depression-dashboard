@@ -1,0 +1,138 @@
+------------------------------------------------------------
+Q1. Find out how many of them are Female and Male
+------------------------------------------------------------
+SELECT Gender, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Gender;
+
+------------------------------------------------------------
+Q2. Update Gender values: Female → 'F', Male → 'M'
+------------------------------------------------------------
+UPDATE [dbo].[Depression+Student+Dataset]
+SET Gender = 'F'
+WHERE Gender = 'Female';
+
+UPDATE [dbo].[Depression+Student+Dataset]
+SET Gender = 'M'
+WHERE Gender = 'Male';
+
+------------------------------------------------------------
+Q3. Check if Gender has NULL or blank values
+------------------------------------------------------------
+-- Check for NULL values
+SELECT * FROM [dbo].[Depression+Student+Dataset]
+WHERE Gender IS NULL;
+
+-- Check for empty string values
+SELECT * FROM [dbo].[Depression+Student+Dataset]
+WHERE Gender = ' ';
+
+------------------------------------------------------------
+Q4. Count Age in Descending Order
+------------------------------------------------------------
+SELECT Age, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Age
+ORDER BY Age DESC;
+
+------------------------------------------------------------
+Add Age_Group Column
+------------------------------------------------------------
+ALTER TABLE [dbo].[Depression+Student+Dataset]
+ADD Age_Group VARCHAR(MAX);
+
+SELECT * FROM [dbo].[Depression+Student+Dataset];
+
+-- Update Age_Group values
+UPDATE [dbo].[Depression+Student+Dataset]
+SET Age_Group = 
+    CASE 
+        WHEN Age BETWEEN 18 AND 24 THEN 'A1'
+        WHEN Age BETWEEN 25 AND 30 THEN 'A2'
+        ELSE 'A3'
+    END;
+
+SELECT * FROM [dbo].[Depression+Student+Dataset];
+
+-- Count Distinct Age Groups
+SELECT Age_Group, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Age_Group;
+
+-- View Table Columns
+SELECT * 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME LIKE 'Depression+Student+Dataset';
+
+------------------------------------------------------------
+Q5. Count students by each distinct category (502 students total)
+------------------------------------------------------------
+SELECT Academic_Pressure, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Academic_Pressure;
+
+SELECT Study_Satisfaction, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Study_Satisfaction;
+
+SELECT Sleep_Duration, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Sleep_Duration;
+
+SELECT Dietary_Habits, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Dietary_Habits;
+
+SELECT Have_you_ever_had_suicidal_thoughts, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Have_you_ever_had_suicidal_thoughts;
+
+SELECT Study_Hours, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Study_Hours;
+
+SELECT Financial_Stress, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Financial_Stress;
+
+SELECT Family_History_of_Mental_Illness, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Family_History_of_Mental_Illness;
+
+SELECT Depression, COUNT(*) AS [Count]
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Depression;
+
+------------------------------------------------------------
+Add Index Column
+------------------------------------------------------------
+ALTER TABLE [dbo].[Depression+Student+Dataset]  
+ADD index_column INT IDENTITY(1,1);
+
+SELECT * FROM [dbo].[Depression+Student+Dataset];
+
+------------------------------------------------------------
+Q6. Update Depression column from 0/1 to YES/NO
+------------------------------------------------------------
+-- Check column data type
+SELECT * 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME LIKE 'Depression+Student+Dataset';
+
+-- Alter column type from BIT to VARCHAR
+ALTER TABLE [dbo].[Depression+Student+Dataset]
+ALTER COLUMN Depression VARCHAR(MAX);
+
+-- Update values
+UPDATE [dbo].[Depression+Student+Dataset]
+SET Depression = 'NO' 
+WHERE Depression = '0';
+
+UPDATE [dbo].[Depression+Student+Dataset]
+SET Depression = 'YES' 
+WHERE Depression = '1';
+
+-- Verify result
+SELECT Depression, COUNT(*) 
+FROM [dbo].[Depression+Student+Dataset]
+GROUP BY Depression;
