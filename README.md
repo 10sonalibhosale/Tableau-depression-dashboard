@@ -19,7 +19,7 @@ This project analyzes student depression patterns using a dataset that includes 
 👉  https://github.com/10sonalibhosale/Tableau-depression-dashboard
 
 ## 📸 Dashboard Preview
-![Dashboard Preview](dashboard_screenshot.png)
+https://github.com/10sonalibhosale/Tableau-depression-dashboard/blob/42e4b5ef02c5df880d9a7efe3927d50bc061d4ef/Student_Dashboard_screenshot.PNG
 
 ## 📁 Files Included
 - dashboard.twbx: Tableau packaged workbook
