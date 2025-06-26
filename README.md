@@ -16,7 +16,7 @@ This project analyzes student depression patterns using a dataset that includes 
 - Visual correlations were built using bar, bubble, and area charts.
 
 ## 🔗 Live Dashboard Link
-👉  [View on Tableau Public](https://public.tableau.com/app/profile/test.account7819/viz/tableauproject_17508814256730/StudentCountAnalysis?publish=yes)
+👉  https://github.com/10sonalibhosale/Tableau-depression-dashboard
 
 ## 📸 Dashboard Preview
 ![Dashboard Preview](dashboard_screenshot.png)
